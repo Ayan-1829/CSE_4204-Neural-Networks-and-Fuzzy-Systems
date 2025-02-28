@@ -23,7 +23,7 @@ data = pd.DataFrame(X, columns=[f'Feature_{i+1}' for i in range(num_features)])
 data['Label'] = y
 
 # Save dataset to CSV
-data.to_csv("Class_2/perception_dataset.csv", index=False)
+data.to_csv("Class_2/perceptron_dataset.csv", index=False)
 
 # Plot the data (if 2D features)
 plt.figure(figsize=(8, 6))
@@ -35,4 +35,3 @@ plt.title("Random Dataset for Perception Learning")
 plt.legend()
 plt.show()
 
-print("Dataset generated and saved as 'perception_dataset.csv'.")

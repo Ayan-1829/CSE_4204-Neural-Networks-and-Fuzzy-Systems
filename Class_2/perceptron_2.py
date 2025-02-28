@@ -3,35 +3,31 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Load dataset from CSV
-data = pd.read_csv("Class_2/perception_dataset.csv")
+data = pd.read_csv("Class_2/perceptron_dataset.csv")
 
 # Split features and labels
 X = data.iloc[:, :-1].values  # All columns except the last one
 Y = data.iloc[:, -1].values   # Last column is the label
 
 # Initialize weights
-learning_rate = 0.01                            # Learning rate
+learning_rate = 0.1                            # Learning rate
 iteration = 800                                 # Number of iterations
 weights = np.random.rand(X.shape[1])            # One weight per feature
 thresold = 1                                    # Thresold
 weights = np.insert(weights, 0, -thresold)
 
 
-# Perceptron learning algorithm
+# Perceptron learning algorithm 2
 for iter in range(iteration):
     for i in range(len(X)):
-        # Compute the weighted sum
         x = X[i]
         x = np.insert(x, 0, 1);
         weighted_sum = np.dot(x, weights)
         
-        # Apply step activation function
         output = 1 if weighted_sum >= 0 else 0
         
-        # Compute the delta
         delta = Y[i] - output
         
-        # Update weights and bias
         if Y[i]==0 and output==1:
             weights -= learning_rate*x
         elif Y[i]==1 and output==0:
